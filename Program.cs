@@ -1,10 +1,18 @@
 using BlazingPizza.Components;
+using BlazingPizza.Data;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+builder.Services.AddDbContext<PizzaContext>(options =>
+    options.UseSqlite(
+        builder.Configuration.GetConnectionString("DefaultConnection") 
+        ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.")
+));
 
 var app = builder.Build();
 
