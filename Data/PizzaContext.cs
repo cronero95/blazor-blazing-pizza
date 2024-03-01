@@ -14,6 +14,7 @@ namespace BlazingPizza.Data
             modelBuilder.Entity<Pizza>().HasData(
                 new Pizza
                 {
+                    Id = 1,
                     Name = "Basic Cheese Pizza",
                     Description = "It's cheesy and delicious. Why wouldn't you want one?",
                     BasePrice = 9.99m,
@@ -53,7 +54,7 @@ namespace BlazingPizza.Data
                 },
                 new Pizza
                 {
-                    Id = 7,
+                    Id = 6,
                     Name = "Veggie Delight",
                     Description = "It's like salad, but on a pizza",
                     BasePrice = 11.50m,
@@ -61,7 +62,7 @@ namespace BlazingPizza.Data
                 },
                 new Pizza
                 {
-                    Id = 8,
+                    Id = 7,
                     Name = "Margherita",
                     Description = "Traditional Italian pizza with tomatoes and basil",
                     BasePrice = 9.99m,
