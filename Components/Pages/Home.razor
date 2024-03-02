@@ -1,5 +1,4 @@
 ﻿@page "/"
-@using Models
 
 <div class="main">
     <h1>Blazing Pizzas</h1>
@@ -23,7 +22,7 @@
 </div>
 
 @code {
-    List<Models.Pizza> specials = new();
+    List<Pizza> specials = new();
 
     protected override void OnInitialized()
     {
