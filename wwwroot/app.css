@@ -49,3 +49,30 @@ h1:focus {
 .darker-border-checkbox.form-check-input {
     border-color: #929292;
 }
+
+.pizza-details-title {
+    text-align: center;
+}
+
+.pizza-details-img {
+    max-width: 350px;
+}
+
+.pizza-details-divider {
+    margin-top: 50px;
+    margin-bottom: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.pizza-details-description {
+    text-align: center;
+}
+
+.pizza-details-btns {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 50px 0 50px;
+}
