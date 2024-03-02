@@ -76,3 +76,7 @@ h1:focus {
     justify-content: space-between;
     padding: 0 50px 0 50px;
 }
+
+.buy-pizza-title {
+    text-align: center;
+}

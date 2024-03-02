@@ -1,0 +1,41 @@
+@page "/buy-pizza/{Id:int}"
+@inject IPizzaService PizzaService
+@inject NavigationManager NavigationManager
+@rendermode @(new InteractiveServerRenderMode(prerender: false))
+
+<div class="main">
+    <div class="buy-pizza-title">
+        <h1>@CurrentPizza.Name</h1>
+    </div>
+    <div class="pizza-details-btns">
+        <button class="btn btn-info" @onclick=@(() => GoBack(@CurrentPizza.Id))>Go Back</button>
+        <button class="btn btn-info" @onclick=@(() => GoHome())>Go Home</button>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public int? Id { get; set; }
+
+    public Pizza CurrentPizza { get; set; } = new();
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if(Id is not null)
+        {
+            var pizza = await PizzaService.GetPizzaByIdAsync((int)Id);
+            if(pizza is not null)
+                CurrentPizza = pizza;
+        }
+    }
+
+    public void GoHome()
+    {
+        NavigationManager.NavigateTo("/");
+    }
+
+    public void GoBack(int id)
+    {
+        NavigationManager.NavigateTo($"/pizza-details/{id}");
+    }
+}
