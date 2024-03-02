@@ -3,8 +3,8 @@
 <div class="main">
     <h1>Blazing Pizzas</h1>
     <ul class="pizza-cards">
-        @if(specials != null) {
-            @foreach(var special in specials) {
+        @if(pizzas != null) {
+            @foreach(var special in pizzas) {
                 <li style="background-image: url('@special.ImageUrl');">
                     <div class="pizza-info">
                         <span class="title">
@@ -22,11 +22,11 @@
 </div>
 
 @code {
-    List<Pizza> specials = new();
+    List<Pizza> pizzas = new();
 
     protected override void OnInitialized()
     {
-        specials.AddRange(new List<Pizza> {
+        pizzas.AddRange(new List<Pizza> {
             new Pizza {Name = "The Baconatorizor", BasePrice =  11.99M, Description = "It has EVERY kind of bacon", ImageUrl="img/pizzas/bacon.jpg"},
             new Pizza {Name = "Buffalo chicken", BasePrice =  12.75M, Description = "Spicy chicken, hot sauce, and blue cheese, guaranteed to warm you up", ImageUrl="img/pizzas/meaty.jpg"},
             new Pizza {Name = "Veggie Delight", BasePrice =  11.5M, Description = "It's like salad, but on a pizza", ImageUrl="img/pizzas/salad.jpg"},
