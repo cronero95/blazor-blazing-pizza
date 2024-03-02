@@ -1,5 +1,6 @@
 using BlazingPizza.Components;
 using BlazingPizza.Data;
+using BlazingPizza.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +14,8 @@ builder.Services.AddDbContext<PizzaContext>(options =>
         builder.Configuration.GetConnectionString("DefaultConnection") 
         ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.")
 ));
+
+builder.Services.AddScoped<IPizzaService, PizzaService>();
 
 var app = builder.Build();
 
