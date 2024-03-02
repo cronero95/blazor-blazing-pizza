@@ -18,5 +18,14 @@ namespace BlazingPizza.Services
             var pizzaList = await _context.Pizzas.ToListAsync();
             return pizzaList;
         }
+
+        public async Task<Pizza> GetPizzaByIdAsync(int id)
+        {
+            var pizza = await _context.Pizzas.FindAsync(id);
+            if(pizza is not null)
+                return pizza;
+            else
+                throw new Exception("No Pizza found");
+        }
     }
 }

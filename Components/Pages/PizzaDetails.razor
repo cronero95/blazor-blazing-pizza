@@ -1,0 +1,24 @@
+@page "/pizza-details/{Id:int}"
+@inject IPizzaService PizzaService
+
+<div class="main">
+    <h3>Blazzing Pizza Presents</h3>
+    <h1>@CurrentPizza.Name</h1>
+</div>
+
+@code {
+    [Parameter]
+    public int? Id { get; set; }
+
+    public Pizza CurrentPizza { get; set; } = new();
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if(Id is not null)
+        {
+            var pizza = await PizzaService.GetPizzaByIdAsync((int)Id);
+            if(pizza is not null)
+                CurrentPizza = pizza;
+        }
+    }
+}

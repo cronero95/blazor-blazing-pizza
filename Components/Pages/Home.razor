@@ -1,5 +1,6 @@
 ﻿@page "/"
 @inject IPizzaService PizzaService
+@rendermode @(new InteractiveServerRenderMode(prerender: false))
 
 <PageTitle>Blazzing Pizza</PageTitle>
 <div class="main">
