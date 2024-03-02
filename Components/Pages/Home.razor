@@ -1,5 +1,6 @@
 ﻿@page "/"
 @inject IPizzaService PizzaService
+@inject NavigationManager NavigationManager
 @rendermode @(new InteractiveServerRenderMode(prerender: false))
 
 <PageTitle>Blazzing Pizza</PageTitle>
@@ -9,15 +10,15 @@
         <p><em>Loading Pizzas...</em></p>
     } else {
         <ul class="pizza-cards">
-            @foreach(var special in pizzas) {
-                <li style="background-image: url('@special.ImageUrl');">
+            @foreach(var pizza in pizzas) {
+                <li style="background-image: url('@pizza.ImageUrl');" @onclick="@(() => ViewPizzaDetails(pizza.Id))">
                     <div class="pizza-info">
                         <span class="title">
-                            @special.Name
+                            @pizza.Name
                         </span>
-                        @special.Description
+                        @pizza.Description
                         <span class="price">
-                            @special.GetFormattedBasePrice()
+                            @pizza.GetFormattedBasePrice()
                         </span>
                     </div>
                 </li>
@@ -32,5 +33,10 @@
     protected override async Task OnInitializedAsync()
     {
         pizzas = await PizzaService.GetAllPizzasAsync();
+    }
+
+    void ViewPizzaDetails(int id)
+    {
+        NavigationManager.NavigateTo($"/pizza-details/{id}");
     }
 }
